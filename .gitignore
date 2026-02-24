@@ -1,45 +1,59 @@
+####################################
 # Maven
+####################################
 target/
+dependency-reduced-pom.xml
 
-# Allure
-target/allure-results/
+####################################
+# Allure (generated reports & results)
+####################################
+.allure/
+allure-results/
 allure-report/
+target/allure-results/
 target/site/allure-maven-plugin/
 
-# Logs
-*.log
-logs/
-
-# Test Artifacts
+####################################
+# Test Artifacts (runtime generated)
+####################################
 screenshots/
 downloads/
 videos/
 traces/
 tmp/
 
-# Environment & Secrets
+####################################
+# Logs
+####################################
+*.log
+logs/
+
+####################################
+# Environment & Secrets (DO NOT COMMIT)
+####################################
 .env
 *.env
-config-uat.properties
-config-prod.properties
-config-local.properties
+config-*.properties
 
-# IDE
+####################################
+# IDE - IntelliJ / VS Code / Eclipse
+####################################
 .idea/
 .vscode/
 *.iml
 
-# OS
-.DS_Store
-Thumbs.db
-/orangehrm-automation-enterprise.rar
-/allure-results/
-
-.allure/
-.git/
-.settings/
-allure-results/
-target/
-
 .classpath
 .project
+.settings/
+
+####################################
+# OS
+####################################
+.DS_Store
+Thumbs.db
+
+####################################
+# Archives / Local files
+####################################
+*.rar
+*.zip
