@@ -34,3 +34,12 @@ config-local.properties
 Thumbs.db
 /orangehrm-automation-enterprise.rar
 /allure-results/
+
+.allure/
+.git/
+.settings/
+allure-results/
+target/
+
+.classpath
+.project
