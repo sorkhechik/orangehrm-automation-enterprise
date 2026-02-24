@@ -1,0 +1,49 @@
+git config --global user.name "Your Name"
+git config --global user.email "your.email@example.com"
+
+
+git config --global user.name "Ghasem Kaboli"
+git config --global user.email "gkaboli@gmail.com"
+
+git init
+
+#اولین Commit (Initial Commit)
+git add .
+git commit -m "Initial project setup"
+
+#ضافه کردن remote
+
+git branch -M main
+git remote add origin https://github.com/USERNAME/REPO_NAME.git
+
+#Example
+git remote add origin https://github.com/ali/test-automation-framework.git
+
+#بررسی
+git remote -v
+
+Push کردن پروژه
+git push -u origin main
+
+
+✅ اگر اولین بار است:
+GitHub ممکن است ازت login یا token بخواهد
+
+
+روال استاندارد برای ادامه کار (خیلی مهم)
+از این به بعد همیشه:
+git status
+git add .
+git commit -m "Meaningful message"
+git push
+
+
+مثال
+git commit -m "Add BrowserConfig and BaseStep"
+
+
+ بهتر است:
+ هر فیچر = یک commit
+تغییرات config جدا commit شوند
+قبل از تغییر بزرگ:
+git pull

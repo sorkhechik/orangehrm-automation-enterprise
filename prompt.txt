@@ -1,0 +1,139 @@
+در نقش یک معمار ارشد تست خودکار (Senior Test Automation Architect) عمل کن.
+
+یک قالب پروژه تست خودکار نرم‌افزار در سطح Enterprise طراحی و تولید کن که کاملاً حرفه‌ای،
+ توسعه‌پذیر، قابل نگهداری و مطابق Best Practiceهای روز صنعت باشد.
+ اگر گزینه های بهتری داری با استدلال پیشنهاد کن
+
+پشته فناوری (Tech Stack):
+- Java
+- Playwright (Java)
+- Cucumber (BDD)
+- JUnit 5 (JUnit Platform)
+- Maven
+- AssertJ برای Assertion
+- Datafaker برای تولید داده تست
+- SLF4J + Log4j2 برای Logging
+- Allure Report برای گزارش‌دهی
+
+الزامات معماری:
+- معماری سازمانی (Enterprise-grade) و مقیاس‌پذیر
+- پیاده‌سازی الگوی Page Object Model (POM)
+- رعایت اصل DRY
+- لایه Components برای اجزای قابل استفاده مجدد UI
+- لایه Business Flows برای سناریوهای سطح دامنه
+- کلاس‌های پایه BasePage و BaseStep
+- یک TestContext مرکزی برای مدیریت Driver و تنظیمات
+- ساختار ماژولار و قابل گسترش
+
+پیکربندی (Configuration):
+- سیستم پیکربندی لایه‌ای (Layered Configuration)
+- اولویت تنظیمات: CLI > Environment Variables > Config Files > Defaults
+- امکان تنظیم همه گزینه‌ها از طریق فایل کانفیگ
+- مقادیر حساس فقط از طریق متغیر محیطی سیستم‌عامل
+- امکان override از خط فرمان Maven
+- پشتیبانی چند محیطی (dev / test / stage / prod)
+
+اجرا (Execution):
+- پشتیبانی اجرای موازی تست‌ها
+- پشتیبانی حالت Headless و Headed
+- پشتیبانی چند مرورگر (Chromium / Firefox / WebKit)
+- اجرای مبتنی بر Tag
+- اجرای کامل از CLI بدون Runner کلاس اختصاصی
+- سازگار با CI/CD
+
+مشاهده‌پذیری و دیباگ (Observability):
+- لاگ‌گذاری ساختاریافته و حرفه‌ای
+- Correlation ID برای هر تست
+- استراتژی Screenshot:
+  - هنگام خطا
+  - در هر Step
+  - در صورت درخواست
+  - تمام صفحه یا عنصر
+- استراتژی Trace:
+  - خاموش
+  - فقط در خطا
+  - همه تست‌ها
+  - نگهداری N اجرای آخر
+- مدیریت Artifacts تست
+- ادغام کامل با Allure:
+  - environment info
+  - categories
+  - attachments
+  - history
+
+پایداری تست (Stability):
+- استراتژی انتظار متمرکز (Central Wait Strategy)
+- Wrapper برای Wait و Actions
+- مکانیزم Retry قابل تنظیم
+- مدیریت Flaky Tests
+
+داده تست (Test Data):
+- تولید داده فیک با Datafaker
+- الگوی Test Data Builder
+- ایزوله‌سازی داده تست
+- پشتیبانی داده ثابت و پویا
+
+پیکربندی پیشرفته:
+- تنظیمات Browser
+- Timeoutها
+- Base URL
+- Trace level
+- Screenshot level
+- Parallelism
+- Environment
+- Credentials (از ENV)
+
+ساختار پروژه:
+- core (driver, config, logging, tracing, waits, utils)
+- pages
+- components
+- flows
+- data
+- steps
+- hooks
+- features
+- config
+- resources
+
+الزامات کدنویسی:
+- کد تمیز و حرفه‌ای
+- نام‌گذاری استاندارد سازمانی
+- قابلیت توسعه آسان
+- حداقل تکرار
+- جداسازی مسئولیت‌ها
+- رعایت SOLID
+- مستندسازی مناسب
+
+موارد خروجی مورد انتظار:
+1. ساختار کامل پروژه Maven
+2. پیاده‌سازی سیستم Configuration لایه‌ای
+3. کلاس TestContext
+4. BasePage
+5. BaseStep
+6. DriverFactory / PlaywrightManager
+7. مدیریت Screenshot
+8. مدیریت Trace
+9. تنظیمات Logging (Log4j2)
+10. تنظیمات Allure
+11. پیکربندی اجرای موازی
+12. مثال Page Object
+13. مثال Component
+14. مثال Flow
+15. مثال Step Definition
+16. مثال Feature فایل
+17. مثال تولید داده تست
+18. مثال اجرای Maven CLI
+19. نمونه config.yaml
+20. پشتیبانی کامل چند محیطی
+
+الزامات اجرایی:
+- پروژه باید آماده اجرا باشد
+- Maven build موفق
+- تست نمونه قابل اجرا
+- Allure قابل تولید
+- Trace و Screenshot تولید شوند
+- CLI overrides کار کنند
+- ENV overrides کار کنند
+
+هدف:
+یک Template حرفه‌ای تست خودکار در سطح سازمانی که بتواند مستقیماً در پروژه‌های واقعی Enterprise استفاده و توسعه داده شود.

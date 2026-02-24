@@ -1,0 +1,34 @@
+# Maven
+target/
+
+# Allure
+target/allure-results/
+allure-report/
+target/site/allure-maven-plugin/
+
+# Logs
+*.log
+logs/
+
+# Test Artifacts
+screenshots/
+downloads/
+videos/
+traces/
+tmp/
+
+# Environment & Secrets
+.env
+*.env
+config-uat.properties
+config-prod.properties
+config-local.properties
+
+# IDE
+.idea/
+.vscode/
+*.iml
+
+# OS
+.DS_Store
+Thumbs.db
