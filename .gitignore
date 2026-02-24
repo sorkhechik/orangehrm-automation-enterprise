@@ -2,7 +2,6 @@
 target/
 
 # Allure
-.allure
 target/allure-results/
 allure-report/
 target/site/allure-maven-plugin/
@@ -35,8 +34,3 @@ config-local.properties
 Thumbs.db
 /orangehrm-automation-enterprise.rar
 /allure-results/
-
-
-.classpath
-.project
-.settings/
