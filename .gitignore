@@ -32,3 +32,4 @@ config-local.properties
 # OS
 .DS_Store
 Thumbs.db
+/orangehrm-automation-enterprise.rar
