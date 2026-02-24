@@ -33,3 +33,4 @@ config-local.properties
 .DS_Store
 Thumbs.db
 /orangehrm-automation-enterprise.rar
+/allure-results/
