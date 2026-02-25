@@ -115,12 +115,12 @@ orangehrm-automation-enterprise/
 │   └── login.feature                    # Login BDD scenarios
 ├── junit-platform.properties            # Cucumber engine properties
 └── log4j2.xml                           # Logging configuration
-
+```
 ---
 
 ## 🏛 Architecture
 
-
+```
 ┌─────────────────────────────────────────────────────┐
 │               Feature Files  (.feature)             │  ← BDD layer (Gherkin)
 └────────────────────────┬────────────────────────────┘
@@ -140,14 +140,15 @@ orangehrm-automation-enterprise/
 ┌────────────────────────▼────────────────────────────┐
 │     PlaywrightManager + BasePage  (driver/core/)    │  ← Browser abstraction
 └─────────────────────────────────────────────────────┘
-
+```
 **Hooks flow per scenario:**
 
-
+```
 @Before  →  PlaywrightManager.start()  →  [Scenario runs]
 →  @After  →  Screenshot (if configured)
 →  Allure attachment
 →  PlaywrightManager.stop()
+```
 
 ---
 
@@ -364,11 +365,3 @@ This project is licensed under the **MIT License** — see [LICENSE](LICENSE) fo
 
 
 ---
-
-## نکات مهم این README:
-
-- **تمام مسیرها** از ساختار واقعی ZIP استخراج شده‌اند
-- **نسخه‌های دقیق** از `pom.xml` گرفته شده‌اند (Playwright 1.58.0، Cucumber 7.21.1 و...)
-- **معماری لایه‌ای** بر اساس ساختار واقعی `flows/`, `pages/`, `steps/` رسم شده
-- **رفتار hooks** از محتوای `TestHooks.java` استخراج شده (screenshot + Allure attachment)
-- **capture.mode** از `CaptureMode.java` و `application-uat.properties` واقعی گرفته شده
