@@ -260,32 +260,30 @@ mvn clean test -Denv=uat -Dheadless=true
 mvn clean test -Denv=uat -Dheadless=true -Dcucumber.filter.tags="@your_tag"
 ```
 
-#### مثال با تاگ واقعی
+### Single tag
 ```bash
-mvn clean test -Denv=uat -Dheadless=true -Dcucumber.filter.tags="@smoke"
-```
-
-#### اجرای چند تاگ با AND:
-```bash
-mvn clean test -Denv=uat -Dheadless=true -Dcucumber.filter.tags="@smoke and @regression"
-```
-
-
-# Single tag
 mvn clean test -Dcucumber.filter.tags="@Smoke"
+```
 
-# Multiple tags (AND)
+### Multiple tags (AND)
+```bash
 mvn clean test -Dcucumber.filter.tags="@Smoke and @Login"
+```
 
-# Multiple tags (OR)
+### Multiple tags (OR)
+```bash
 mvn clean test -Dcucumber.filter.tags="@Smoke or @Regression"
+```
 
-# Exclude tag
+### Exclude tag
+```bash
 mvn clean test -Dcucumber.filter.tags="not @WIP"
+```
 
 ### Run via TestRunner (IDE)
-
+```
 Right-click `TestRunner.java` → **Run As → JUnit Test**
+```
 
 ---
 
