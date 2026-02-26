@@ -176,8 +176,7 @@ cd orangehrm-automation-enterprise
 
 # 2. Install Playwright browsers (first time only)
 ```bash
-mvn exec:java -e -D exec.mainClass=com.microsoft.playwright.CLI \
-  -D exec.args="install --with-deps"
+mvn exec:java -e -D exec.mainClass=com.microsoft.playwright.CLI -D exec.args="install --with-deps"
 ```
 
 # 3. Verify build
