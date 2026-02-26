@@ -1,5 +1,4 @@
 # 👋 First-Time Contributor Onboarding
-
 > A quick-start guide for new team members joining the OrangeHRM Automation Enterprise project.
 
 ---
