@@ -179,16 +179,17 @@ mvn exec:java -e -D exec.mainClass=com.microsoft.playwright.CLI \
   -D exec.args="install --with-deps"
 
 # 3. Verify build
+```bash
 mvn clean compile
-
+```
 ---
 
 ## ⚙ Configuration
 
 Config files live at:
 
+`src/test/resources/config/application-<env>.properties`
 
-src/test/resources/config/application-<env>.properties
 
 | File | Environment |
 |---|---|
