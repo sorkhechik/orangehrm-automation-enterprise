@@ -290,26 +290,26 @@ import io.cucumber.java.en.When;
 
 public class LoginSteps extends BaseStep {
 
-private final LoginFlow loginFlow;
+	private final LoginFlow loginFlow;
 
-public LoginSteps() {
-this.loginFlow = new LoginFlow(page);
-}
+	public LoginSteps() {
+	this.loginFlow = new LoginFlow(page);
+	}
 
-@When("the user enters username {string} and password {string}")
-public void theUserEntersCredentials(String username, String password) {
-loginFlow.enterCredentials(username, password);
-}
+	@When("the user enters username {string} and password {string}")
+	public void theUserEntersCredentials(String username, String password) {
+	loginFlow.enterCredentials(username, password);
+	}
 
-@And("the user clicks the Login button")
-public void theUserClicksLogin() {
-loginFlow.clickLogin();
-}
+	@And("the user clicks the Login button")
+	public void theUserClicksLogin() {
+	loginFlow.clickLogin();
+	}
 
-@Then("the user should be redirected to the Dashboard")
-public void theUserShouldSeeTheDashboard() {
-loginFlow.verifyDashboardVisible();
-}
+	@Then("the user should be redirected to the Dashboard")
+	public void theUserShouldSeeTheDashboard() {
+	loginFlow.verifyDashboardVisible();
+	}
 }
 ```
 
@@ -329,7 +329,7 @@ All page objects must extend `BasePage`.
 
 ### Template
 
-java
+```java
 package com.company.orangehrm.pages;
 
 import com.company.orangehrm.core.BasePage;
@@ -337,39 +337,39 @@ import com.microsoft.playwright.Page;
 
 public class LoginPage extends BasePage {
 
-// --- Selectors (define as constants) ---
-private static final String USERNAME_INPUT  = "input[name='username']";
-private static final String PASSWORD_INPUT  = "input[name='password']";
-private static final String LOGIN_BUTTON    = "button[type='submit']";
-private static final String ERROR_MESSAGE   = ".oxd-alert-content-text";
+	// --- Selectors (define as constants) ---
+	private static final String USERNAME_INPUT  = "input[name='username']";
+	private static final String PASSWORD_INPUT  = "input[name='password']";
+	private static final String LOGIN_BUTTON    = "button[type='submit']";
+	private static final String ERROR_MESSAGE   = ".oxd-alert-content-text";
 
-public LoginPage(Page page) {
-super(page);
-}
+	public LoginPage(Page page) {
+	super(page);
+	}
 
-// --- Actions ---
-public void enterUsername(String username) {
-page.fill(USERNAME_INPUT, username);
-}
+	// --- Actions ---
+	public void enterUsername(String username) {
+	page.fill(USERNAME_INPUT, username);
+	}
 
-public void enterPassword(String password) {
-page.fill(PASSWORD_INPUT, password);
-}
+	public void enterPassword(String password) {
+	page.fill(PASSWORD_INPUT, password);
+	}
 
-public void clickLoginButton() {
-page.click(LOGIN_BUTTON);
-}
+	public void clickLoginButton() {
+	page.click(LOGIN_BUTTON);
+	}
 
-// --- Assertions / Queries ---
-public String getErrorMessage() {
-return page.textContent(ERROR_MESSAGE);
-}
+	// --- Assertions / Queries ---
+	public String getErrorMessage() {
+	return page.textContent(ERROR_MESSAGE);
+	}
 
-public boolean isDashboardVisible() {
-return page.isVisible(".oxd-topbar-header");
+	public boolean isDashboardVisible() {
+	return page.isVisible(".oxd-topbar-header");
+	}
 }
-}
-
+```
 ### Rules
 
 - **All selectors are constants** — never hardcode strings inside methods
@@ -381,12 +381,13 @@ return page.isVisible(".oxd-topbar-header");
 
 ## 🔀 Writing Flows
 
-Flows live in `src/main/java/com/company/orangehrm/flows/`.  
+Flows live in the following path:
+	`src/main/java/com/company/orangehrm/flows/`
 Flows compose page object actions into complete business workflows.
 
 ### Template
 
-java
+```java
 package com.company.orangehrm.flows;
 
 import com.company.orangehrm.pages.LoginPage;
@@ -395,32 +396,33 @@ import org.assertj.core.api.Assertions;
 
 public class LoginFlow {
 
-private final LoginPage loginPage;
+	private final LoginPage loginPage;
 
-public LoginFlow(Page page) {
-this.loginPage = new LoginPage(page);
-}
+	public LoginFlow(Page page) {
+	this.loginPage = new LoginPage(page);
+	}
 
-public void enterCredentials(String username, String password) {
-loginPage.enterUsername(username);
-loginPage.enterPassword(password);
-}
+	public void enterCredentials(String username, String password) {
+	loginPage.enterUsername(username);
+	loginPage.enterPassword(password);
+	}
 
-public void clickLogin() {
-loginPage.clickLoginButton();
-}
+	public void clickLogin() {
+	loginPage.clickLoginButton();
+	}
 
-public void loginAs(String username, String password) {
-enterCredentials(username, password);
-clickLogin();
-}
+	public void loginAs(String username, String password) {
+	enterCredentials(username, password);
+	clickLogin();
+	}
 
-public void verifyDashboardVisible() {
-Assertions.assertThat(loginPage.isDashboardVisible())
-.as("Dashboard should be visible after login")
-.isTrue();
+	public void verifyDashboardVisible() {
+	Assertions.assertThat(loginPage.isDashboardVisible())
+	.as("Dashboard should be visible after login")
+	.isTrue();
+	}
 }
-}
+```
 
 ### Rules
 
@@ -450,7 +452,7 @@ Assertions.assertThat(loginPage.isDashboardVisible())
 
 Use Log4j2 (SLF4J facade) — never `System.out.println()`:
 
-java
+```java
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -459,16 +461,17 @@ private static final Logger log = LoggerFactory.getLogger(YourClass.class);
 log.info("Starting login flow for user: {}", username);
 log.debug("Selector resolved: {}", USERNAME_INPUT);
 log.error("Login failed unexpectedly", exception);
-
+```
 ### Test Data
 
 Always use `FakerFactory` for dynamic test data — **never hardcode** personal data:
 
-java
+```java
 import com.company.orangehrm.data.FakerFactory;
 
 String email    = FakerFactory.get().internet().emailAddress();
 String fullName = FakerFactory.get().name().fullName();
+```
 
 ---
 
@@ -487,30 +490,29 @@ String fullName = FakerFactory.get().name().fullName();
 
 Follow the same Conventional Commits format:
 
-
-feat(leave): add leave balance validation scenarios
-fix(hooks): prevent NullPointerException on trace save
+`feat(leave): add leave balance validation scenarios`
+`fix(hooks): prevent NullPointerException on trace save`
 
 ### PR Description Template
 
-markdown
 ## Summary
 Brief description of what this PR does.
 
 ## Changes
+```markdown
 - Added `LeaveBalancePage` with balance assertion methods
 - Added `LeaveFlow.verifyBalance()` flow method
 - Added 3 Gherkin scenarios covering balance edge cases
+```
 
 ## Test Evidence
 - [ ] Ran full suite locally — all green
 - [ ] Allure report attached (screenshot)
 
 ## Related Issues
-Closes #<issue_number>
+`Closes #<issue_number>`
 
 ### Review process
-
 1. At least **1 approval** required before merging
 2. Address all review comments — resolve threads after fixing
 3. Squash commits if the PR has noisy WIP commits before merge
@@ -545,29 +547,6 @@ Open a GitHub Issue using the **Feature Request** template and include:
 
 ## 📄 License
 
-By contributing, you agree that your contributions will be licensed under the **MIT License** that covers this project.
-
 ---
 
 *Happy testing! 🍊*
-
-
-فایل آماده‌ست! این چیزیه که داخلش هست:
-
-**ساختار CONTRIBUTING.md:**
-
-- **Code of Conduct** — قوانین رفتاری مختصر
-- **Getting Started** — fork، clone، install browsers، اولین test run
-- **Architecture Quick Reference** — نمودار لایه‌ها با قانون طلایی: هر لایه فقط لایه زیرش را صدا می‌زند
-- **Development Workflow** — چرخه کامل روزانه با bash commands
-- **Branching Strategy** — جدول انواع branch با مثال‌های واقعی
-- **Commit Convention** — فرمت Conventional Commits با scope‌های مخصوص این پروژه
-- **Feature Files** — template کامل Gherkin با tagging strategy
-- **Step Definitions** — template با قانون thin glue
-- **Page Objects** — template با selectors به عنوان constant
-- **Flows** — template با AssertJ integration
-- **Code Style** — logging با SLF4J، FakerFactory برای test data
-- **PR Process** — checklist قبل از PR + template description
-- **Bug Report & Feature Request** — فرمت استاندارد
-
-همه چیز دقیقاً بر اساس ساختار واقعی پروژه (PlaywrightManager، BasePage، FakerFactory، LoginFlow، و...) نوشته شده.
