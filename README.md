@@ -239,24 +239,38 @@ capture.trace=ON_FAILURE
 
 ### Run all tests (default: UAT)
 
-bash
+```bash
 mvn clean test
+```
 
 ### Run against a specific environment
 
-bash
+```bash
 mvn clean test -Denv=uat
 mvn clean test -Denv=dev
 mvn clean test -Denv=prod
-
+```
 ### Run headless
 
-bash
+```bash
 mvn clean test -Denv=uat -Dheadless=true
-
+```
 ### Run by Cucumber tag
+```bash
+mvn clean test -Denv=uat -Dheadless=true -Dcucumber.filter.tags="@your_tag"
+```
 
-bash
+#### مثال با تاگ واقعی
+```bash
+mvn clean test -Denv=uat -Dheadless=true -Dcucumber.filter.tags="@smoke"
+```
+
+#### اجرای چند تاگ با AND:
+```bash
+mvn clean test -Denv=uat -Dheadless=true -Dcucumber.filter.tags="@smoke and @regression"
+```
+
+
 # Single tag
 mvn clean test -Dcucumber.filter.tags="@Smoke"
 
