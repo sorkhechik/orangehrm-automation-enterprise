@@ -141,7 +141,7 @@ orangehrm-automation-enterprise/
 │     PlaywrightManager + BasePage  (driver/core/)    │  ← Browser abstraction
 └─────────────────────────────────────────────────────┘
 ```
-###Hooks flow per scenario:**
+### Hooks flow per scenario:**
 
 ```
 @Before  →  PlaywrightManager.start()  →  [Scenario runs]
@@ -175,8 +175,10 @@ cd orangehrm-automation-enterprise
 ```
 
 # 2. Install Playwright browsers (first time only)
+```bash
 mvn exec:java -e -D exec.mainClass=com.microsoft.playwright.CLI \
   -D exec.args="install --with-deps"
+```
 
 # 3. Verify build
 ```bash
@@ -201,19 +203,27 @@ Config files live at:
 
 properties
 # Application
+```properties
 base.url=https://opensource.orangehrmlive.com/
+```
 
 # Browser
+```properties
 browser=chromium
 headless=false
+```
 
 # Timeouts (ms)
+```properties
 timeout.implicit.wait=10000
 timeout.page.load=30000
+```
 
 # Capture
+```properties
 capture.mode=ON_FAILURE
 capture.trace=ON_FAILURE
+```
 
 **`capture.mode` values:**
 
