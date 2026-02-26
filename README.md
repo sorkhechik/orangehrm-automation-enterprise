@@ -290,19 +290,19 @@ Right-click `TestRunner.java` → **Run As → JUnit Test**
 ## 📊 Allure Reports
 
 ### Serve report locally (live server)
-
-bash
+```bash
 mvn allure:serve
+```
 
 ### Generate static report
-
-bash
+```bash
 mvn allure:report
+```
 
 ### Static report location
-
-
+```
 target/site/allure-maven-plugin/index.html
+```
 
 **What's included in the report:**
 - Scenario pass/fail status
@@ -328,9 +328,9 @@ target/site/allure-maven-plugin/index.html
 This project follows **Conventional Commits** and **Semantic Versioning (SemVer)**.
 
 ### Commit format
-
-
+```
 <type>(<scope>): <short description>
+```
 
 | Type | When to use |
 |---|---|
@@ -342,24 +342,23 @@ This project follows **Conventional Commits** and **Semantic Versioning (SemVer)
 | `docs` | Documentation updates |
 
 ### Examples
-
-bash
+```bash
 git commit -m "feat(login): add negative login scenarios"
 git commit -m "fix(hooks): handle screenshot IOException"
 git commit -m "refactor(pages): extract LoginPage selectors to constants"
 git commit -m "chore(deps): bump playwright to 1.58.0"
+```
 
 ### Daily workflow
-
-bash
+```bash
 git status
 git add .
 git commit -m "feat(scope): meaningful message"
 git push
+```
 
 ### First-time repository setup
-
-bash
+```bash
 git config --global user.name  "Your Name"
 git config --global user.email "your.email@example.com"
 
@@ -369,15 +368,17 @@ git commit -m "chore: initial project setup"
 git branch -M main
 git remote add origin https://github.com/USERNAME/REPO_NAME.git
 git push -u origin main
-
+```
 ---
 
 ## 🤝 Contributing
 
 1. Fork the repository
-2. Create a feature branch: `git checkout -b feat/your-feature`
+2. Create a feature branch: 
+	`git checkout -b feat/your-feature`
 3. Commit your changes using Conventional Commits
-4. Push to your fork: `git push origin feat/your-feature`
+4. Push to your fork: 
+	`git push origin feat/your-feature`
 5. Open a Pull Request
 
 Please read [CONTRIBUTING.md](CONTRIBUTING.md) for full guidelines.
