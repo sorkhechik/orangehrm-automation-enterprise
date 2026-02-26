@@ -41,35 +41,39 @@ By participating in this project, you agree to maintain a respectful and inclusi
 # Fork via GitHub UI, then:
 git clone https://github.com/YOUR_USERNAME/orangehrm-automation-enterprise.git
 cd orangehrm-automation-enterprise
+```
 
 ### 2. Add upstream remote
 
-bash
+```bash
 git remote add upstream https://github.com/sorkhechik/orangehrm-automation-enterprise.git
 git remote -v  # verify
+```
 
 ### 3. Install dependencies & browsers
-
-bash
+```bash
 # Install Playwright browser binaries (first time only)
 mvn exec:java -e -D exec.mainClass=com.microsoft.playwright.CLI \
   -D exec.args="install --with-deps"
+```
 
 # Verify build
+```bash
 mvn clean compile
+```
 
 ### 4. Run the test suite to confirm everything works
 
-bash
+```bash
 mvn clean test -Denv=uat -Dheadless=true
-
+```
 ---
 
 ## 🏛 Project Architecture Quick Reference
 
 Before contributing, understand the layer responsibilities:
 
-
+```
 Feature Files  (.feature)        ← BDD scenarios in Gherkin — what to test
 ↓
 Step Definitions  (steps/)       ← Glue code — how Gherkin maps to Java
@@ -79,7 +83,7 @@ Flows  (flows/)                  ← Reusable business workflows (e.g. LoginFlow
 Page Objects  (pages/)           ← UI interactions per page, extends BasePage
 ↓
 PlaywrightManager + BasePage     ← Browser lifecycle & shared utilities
-
+```
 **Key rule:** each layer should only call the layer directly below it.  
 Step definitions call flows or page objects — **never** Playwright API directly.
 
@@ -87,29 +91,40 @@ Step definitions call flows or page objects — **never** Playwright API directl
 
 ## 🔄 Development Workflow
 
-bash
+```bash
 # 1. Sync your fork with upstream before starting
 git fetch upstream
 git checkout main
 git merge upstream/main
+```
 
 # 2. Create a feature branch (see Branching Strategy)
+```bash
 git checkout -b feat/login-sso-scenarios
+```
 
 # 3. Make your changes following the guidelines below
 
 # 4. Run affected tests
+```bash
 mvn clean test -Denv=uat -Dheadless=true -Dcucumber.filter.tags="@Login"
+```
 
 # 5. Run full suite to catch regressions
+```bash
 mvn clean test -Denv=uat -Dheadless=true
+```
 
 # 6. Commit using Conventional Commits format
+```bash
 git add .
 git commit -m "feat(login): add SSO login scenarios"
+```
 
 # 7. Push and open Pull Request
+```bash
 git push origin feat/login-sso-scenarios
+```
 
 ---
 
@@ -126,13 +141,13 @@ git push origin feat/login-sso-scenarios
 
 ### Examples
 
-bash
+```bash
 git checkout -b feat/employee-leave-scenarios
 git checkout -b fix/login-page-selector-timeout
 git checkout -b refactor/base-page-wait-helpers
 git checkout -b chore/bump-playwright-1.59.0
 git checkout -b docs/update-contributing-guide
-
+```
 **Rules:**
 - Branch off from `main` only
 - One concern per branch — keep branches focused and short-lived
@@ -147,7 +162,7 @@ This project follows **[Conventional Commits](https://www.conventionalcommits.or
 ### Format
 
 
-<type>(<scope>): <short description>
+`type>(<scope>): <short description>`
 
 [optional body]
 
@@ -174,13 +189,14 @@ Use the feature area or module name:
 
 ### Examples
 
-bash
+```bash
 git commit -m "feat(login): add negative login with invalid credentials"
 git commit -m "fix(hooks): handle screenshot IOException on Windows paths"
 git commit -m "refactor(pages): extract LoginPage selectors to constants"
 git commit -m "chore(deps): bump playwright to 1.59.0"
 git commit -m "docs(readme): add allure report screenshots"
 git commit -m "test(employee): add PIM module smoke scenarios"
+```
 
 ### Rules
 
@@ -193,7 +209,8 @@ git commit -m "test(employee): add PIM module smoke scenarios"
 
 ## 📝 Writing Feature Files
 
-Feature files live in `src/test/resources/features/`.
+Feature files live in the flowwing path:
+	`src/test/resources/features/`
 
 ### Naming
 
@@ -202,7 +219,7 @@ Feature files live in `src/test/resources/features/`.
 
 ### Structure Template
 
-gherkin
+```gherkin
 @ModuleName
 Feature: <Module> - <Brief capability description>
   As a <role>
@@ -210,25 +227,26 @@ Feature: <Module> - <Brief capability description>
   So that <benefit>
 
   Background:
-Given the user is on the OrangeHRM login page
+	Given the user is on the OrangeHRM login page
 
   @Smoke @Login
   Scenario: Successful login with valid admin credentials
-When the user enters username "Admin" and password "admin123"
-And the user clicks the Login button
-Then the user should be redirected to the Dashboard
+	When the user enters username "Admin" and password "admin123"
+	And the user clicks the Login button
+	Then the user should be redirected to the Dashboard
 
   @Regression @Login @Negative
   Scenario Outline: Login fails with invalid credentials
-When the user enters username "<username>" and password "<password>"
-And the user clicks the Login button
-Then an error message "<message>" should be displayed
+	When the user enters username "<username>" and password "<password>"
+	And the user clicks the Login button
+	Then an error message "<message>" should be displayed
 
 Examples:
 | username | password  | message                          |
 | Admin    | wrongpass | Invalid credentials              |
 |          | admin123  | Required                         |
 | Admin    |           | Required                         |
+```
 
 ### Tagging Strategy
 
@@ -252,7 +270,8 @@ Examples:
 
 ## 🔧 Writing Step Definitions
 
-Step definitions live in `src/test/java/com/company/orangehrm/steps/`.
+Step definitions live in the following path:
+	`src/test/java/com/company/orangehrm/steps/`
 
 ### Naming
 
@@ -261,7 +280,7 @@ Step definitions live in `src/test/java/com/company/orangehrm/steps/`.
 
 ### Template
 
-java
+```java
 package com.company.orangehrm.steps;
 
 import com.company.orangehrm.flows.LoginFlow;
@@ -292,6 +311,7 @@ public void theUserShouldSeeTheDashboard() {
 loginFlow.verifyDashboardVisible();
 }
 }
+```
 
 ### Rules
 
