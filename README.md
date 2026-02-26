@@ -141,7 +141,7 @@ orangehrm-automation-enterprise/
 │     PlaywrightManager + BasePage  (driver/core/)    │  ← Browser abstraction
 └─────────────────────────────────────────────────────┘
 ```
-### Hooks flow per scenario:**
+### Hooks flow per scenario:
 
 ```
 @Before  →  PlaywrightManager.start()  →  [Scenario runs]
