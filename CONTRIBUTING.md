@@ -489,9 +489,10 @@ String fullName = FakerFactory.get().name().fullName();
 ### PR Title
 
 Follow the same Conventional Commits format:
-
-`feat(leave): add leave balance validation scenarios`
-`fix(hooks): prevent NullPointerException on trace save`
+```markdown
+feat(leave): add leave balance validation scenarios
+fix(hooks): prevent NullPointerException on trace save
+```
 
 ### PR Description Template
 
