@@ -167,10 +167,12 @@ orangehrm-automation-enterprise/
 
 ## 💾 Installation
 
-bash
+
 # 1. Clone the repository
+```bash
 git clone https://github.com/sorkhechik/orangehrm-automation-enterprise.git
 cd orangehrm-automation-enterprise
+```
 
 # 2. Install Playwright browsers (first time only)
 mvn exec:java -e -D exec.mainClass=com.microsoft.playwright.CLI \
