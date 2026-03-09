@@ -38,7 +38,7 @@ public class LoginSteps extends BaseStep {
     @Then("the user should be redirected to the dashboard")
     public void theUserShouldBeRedirectedToTheDashboard() {
         Assertions.assertTrue(loginResult,
-                "Expected dashboard to be visible after successful login, but it was not.");
+                "After successful login, expected redirect to the Dashboard page and visibility of \"Dashboard\" in the top bar, but the element was not found.");
     }
 
     @Then("an error message should be displayed")

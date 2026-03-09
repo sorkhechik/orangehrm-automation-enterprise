@@ -35,18 +35,24 @@ public class LoginPage extends BasePage {
 
     // ─── Assertions ──────────────────────────────────────────────
 
-    public boolean isDashboardVisible() {
-        try {
-            // ابتدا منتظر تغییر URL می‌مانیم
-            waitForPage("**/dashboard/**" , 90_000);
-            
-            // سپس چک می‌کنیم المان اصلی داشبورد لود شده باشد
-            return isElementVisible(DASHBOARD_TITLE);
-        } catch (Exception e) {
-            log.error("Dashboard check failed: {}", e.getMessage());
-            return false;
-        }
-    }
+	public boolean isDashboardVisible() {
+		try {
+			log.info("Current URL before wait: {}", page().url());
+			waitForPage("**/dashboard1/**", 90_000);
+			log.info("URL matched dashboard");
+			
+			log.info("Waiting for dashboard element visibility...");
+		    waitForVisible($(DASHBOARD_TITLE));
+		    
+			boolean visible = isElementVisible(DASHBOARD_TITLE);
+			log.info("Dashboard element visible: {}", visible);
+			return visible;
+		} catch (Exception e) {
+			log.warn("Login failed — error: {}", e.getMessage());
+			log.warn("URL at failure: {}", page().url());
+			return false;
+		}
+	}
 
     public String getErrorMessage() {
         try {

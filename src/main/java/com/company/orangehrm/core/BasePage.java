@@ -94,10 +94,12 @@ public abstract class BasePage {
 
     protected void waitForVisible(Locator locator) {
         locator.waitFor(
-                new Locator.WaitForOptions()
-                        .setState(WaitForSelectorState.VISIBLE)
+            new Locator.WaitForOptions()
+                .setState(WaitForSelectorState.VISIBLE)
+                .setTimeout(PlaywrightManager.config().pageLoadTimeoutMs()) // ✅ timeout از config
         );
     }
+
 
     protected void waitForHidden(Locator locator) {
         locator.waitFor(
